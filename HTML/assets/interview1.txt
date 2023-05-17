@@ -1,0 +1,56 @@
+Human:
+I want you to act as an interviewer. I will be the candidate and you will ask me the interview questions for the parallel computing Engineer position. This is a position which requires interviewers to be familiar with parallel computing libraries like C++, CUDA, OpenMP and MPI I want you to only reply as the interviewer. Do not write all the conversation at once. I want you to only do the interview with me. Ask me the questions and wait for my answers. Do not write explanations. Ask me the questions one by one like an interviewer does and wait
+ for my answers. My first sentence is "Hi".
+
+Assistant:
+Hi, and thank you for applying for the parallel computing Engineer position. Can you please tell us about your experience with parallel computing libraries such as C++, CUDA, OpenMP, 
+and MPI?                                                                                                                                                                               
+
+Human:
+I have experience in constructing basic topics like odd-even transportation sort, Brownian movement simulation and heat distribution simulation.
+
+Assistant:
+Great, can you please give an example of a project you have worked on that utilized C++ and one of the parallel computing libraries (CUDA, OpenMP, or MPI)?                            
+
+Human:
+Yes. In the project of brownian movement simulation, I simulate the movement of 2000 particles by calculating the gravity and repulsion of one another, which has a complexity of O(n^2). I distribute the task in 20 processes via MPI in the MPI implementation, and 512 cuda blocks in the CUDA implementation.
+
+Assistant:
+Can you explain the steps you took to distribute the task in MPI and CUDA? How did you ensure that the communication between processes and blocks was efficient?  
+
+Human:
+In the MPI implementation, I divide the particles into several sections according to its index, and the calculation task is distributed to each process according to the rank. Then I use broadcast and gather function to ensure that each process can obtain the latest status of the particles, including the velocity and position. The efficiency is ensured by using the  open-loop communication and block operation. In the CUDA implementation, the division is done in the same ways as MPI implemetation, since each block can get access to the same piece
+ of memory, such operation is not necessary, and it's easier to communicate among each rank.
+
+Assistant:
+Can you explain how you optimized the code to ensure that the communication between processes and blocks was efficient? Did you use any specific techniques or libraries to optimize the performance?                                                                                                                                                                       
+
+
+Human:
+In the MPI implementation, the updated status stored in each rank is broadcasted to other ranks. This is an open-loop function so it will reduce the time wasted in data distribution. In the CUDA implementation, since the status is stored in the same piece of memory where all blocks can get access to, there's less requirements in dealing with communication issues, we just need to ensure that the data is correctly updated by each block according to the indices of blocks.
+
+Assistant:
+Thank you for the explanation. Can you tell me about a time when you had to debug a parallel computing project and how you approached the problem?                                     
+
+Human:
+Yes, the issues in my programming often comes up in the data communication process. In one MPI project where rank 0 need to gather the data produced by other ranks and plot the result
+, the data cannot be gathered. It turns out that I misuse the Gather and Gatherv function, and the memory space is not enough to transfer the data.
+
+Assistant:
+In that case, how did you go about debugging the issue? Did you use any specific tools or techniques to identify the problem?                                                          
+
+Human:
+The issue is found when I checking the code content, no specific tools are involved.
+
+Assistant:
+I see. Can you tell me about a time when you had to optimize a parallel computing project for performance and what specific techniques you used to improve performance?                
+
+Human:
+Upon now I haven't gain experience in optimizing my algorithm since my projects are mostly classic tasks in parallel computing, and they usually have satisfying solutions I could refesr to.
+
+Assistant:
+I understand. Can you tell me about your experience with CUDA and how you have used it in your projects?
+
+Human:
+Upon now I 've gained experience in using CUDA to simulate particle movement and heat distribution, I 've used CUDA blocks to calculate the status of each part in the simulated environment parallelly.
+

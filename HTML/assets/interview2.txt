@@ -1,0 +1,68 @@
+Human:
+I want you to act as an interviewer. I will be the candidate and you will ask me the interview questions for the Software engineer position. This is a position which requires intervie
+wers to be equipped with professional knowledge in writing regular C++ algorithms, and be familiar with the features of tools like CMAKE and GCC. I want you to only reply as the inter
+viewer. Do not write all the conversation at once. I want you to only do the interview with me. Ask me the questions and wait for my answers. Do not write explanations. Ask me 10 ques
+tions one by one like an interviewer does and wait for my answers. My first sentence is "Hi".
+
+Assistant:
+Hi, can you tell me about your experience with C++ programming?                                                                                                                        
+
+Human:
+My experience in C++ programming is mainly about writing control algorithms on embedded devices and writing applications based on ROS.
+
+Assistant:
+Great, can you give me an example of a control algorithm you've written in C++?                                                                                                        
+
+Human:
+I've written an LQR algorithm to control a quadcoptor using Eigen3 and OpenCV. I use openCV to obtain the target and calculate the error via Eigen3. The input of the algorithm is the error and the output is the throttle value of x,y,z direction
+
+Assistant:
+That sounds interesting. Can you explain how you implemented the LQR algorithm for controlling the quadcopter?                                                                         
+
+Human:
+I first model the quadcopter based on matlab and calculate the required Q, R matrix. Then I use Eigen3 to calculate the required value and output the throttle.
+
+Assistant:
+Can you explain what you mean by "model the quadcopter based on MATLAB"? What specific steps did you take in this process?                                                             
+
+Human:
+I model the motors and the quadcopter frame via state-space model.
+
+Assistant:
+Can you explain what a state-space model is and how it is used in this context?                                                                                                        
+
+Human:
+State-space model is a widely-used approach in modelling MIMO systems, it used a state transition matrix to model the change of state. In this context, the output is the x,y,z position and the velocity decomposition in x,y,z direction.
+
+Assistant:
+Can you explain how you calculated the required Q and R matrices for the quadcopter? What specific steps did you take in this process?                                                 
+
+Human:
+THe matrix is calculated by constructing a cost function which takes Q, R as variables. Then by solving ricatti formula I can obtain the required matrix. This is done by using the toolbox in matlab
+
+Assistant:
+Can you walk me through the process of constructing the cost function and solving the Riccati equation to obtain the required matrices? What specific steps did you take?              
+
+Human:
+No, this is mainly done by `LQR` function in matlab.
+
+Assistant:
+Can you explain what the LQR function in MATLAB does and how you used it to obtain the required Q and R matrices for the quadcopter?                                                   
+
+Human:
+It takes the LTI system, the required converge time, and the stability requirements as input, and outputs the resulting Q,R matrix. Here the LTI system is my quadcopter.
+
+Assistant:
+Can you explain what an LTI system is and how it is related to the quadcopter you modeled in MATLAB?                                                                                   
+
+Human:
+A LTI system is a system that is linear and time-invarient, which means that it has the property of distribution rule, exchange rule and combination rule. The quadcopter is modeled into LTI system by modifying linearizing the differencial equation that models the quadcopter, then the modified equation will be written in state-space form.
+
+Assistant:
+Can you explain what you mean by "modifying the differential equation" and how you transformed it into a state-space form? What specific steps did you take in this process?           
+
+Human:
+This modification is about changing trigonometric function into a linear form, like changing `sin alpha` into `alpha`.
+
+Assistant:
+Can you explain how you transformed the trigonometric functions into linear forms? What specific steps did you take in this process? 
